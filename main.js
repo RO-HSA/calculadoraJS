@@ -1,8 +1,8 @@
 let telaVazia = true;
+let existeOperador = false;
 let input = '';
 let primeiroOperando = '';
 let segundoOperando = '';
-let existeOperador = false;
 let operadorAtual = '';
 let resultado = 0;
 
