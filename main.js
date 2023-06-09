@@ -27,7 +27,10 @@ function limpaTela() {
     visorCalculo.innerHTML = '';
     visorResultado.innerHTML = '';
     existeOperador = false;
+    telaVazia = true;
     input = '';
+    primeiroOperando = '';
+    segundoOperando = '';
 }
 
 function setaOperador(operador) {
@@ -39,8 +42,8 @@ function setaOperador(operador) {
 }
 
 function calcula() {
-    primeiroOperando = parseFloat(primeiroOperando);
-    segundoOperando = parseFloat(segundoOperando);
+    primeiroOperando = parseInt(primeiroOperando);
+    segundoOperando = parseInt(segundoOperando);
     const visorResultado = document.getElementById('resultado');
 
     switch (operadorAtual) {
@@ -59,6 +62,15 @@ function calcula() {
     };
 
     visorResultado.innerHTML = resultado;
+    console.log(visorResultado.innerHTML = resultado)
+
+    resultado = 0;
+    primeiroOperando = '';
+    segundoOperando = '';
+    input = '';
+    operadorAtual = '';
+    existeOperador = false;
+    telaVazia = true;
 }
 
 function apaga() {
