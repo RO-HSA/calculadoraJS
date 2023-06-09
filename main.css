@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+}
+
+.container {
+    background-color: rgba(199, 190, 184, 0.5);
+    height: 270px;
+    width: 200px;
+    margin: 300px auto;
+    padding: 12px;
+}
+
+.visor {
+    background-color: rgb(133, 123, 123, 0.4);
+    height: 3rem;
+    margin-bottom: 12px;
+    color: #423c3c;
+    text-align: right;
+}
+
+.visor p {
+    padding: 3px 5px;
+    font-size: 14px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 2px;
+}
+
+button {
+    padding: 10px;
+    background-color: #c5c4c4;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+#confirmar {
+    grid-row: 4 / 6;
+    grid-column: 4;
+}
+
+#botao-zero {
+    grid-column: 1 / 3;
+}
