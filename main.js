@@ -1,24 +1,26 @@
-let telaVazia = true;
-let existeOperador = false;
+let naoExisteOperador = true;
 let input = '';
+let operadorAtual = '';
 let primeiroOperando = '';
 let segundoOperando = '';
-let operadorAtual = '';
 let resultado = 0;
+let resultadoAuxiliar = 0;
 
 
 function novoValor(operando) {
     const visorCalculo = document.getElementById('calculo');
 
-    if(telaVazia && !existeOperador) {
+    if (operadorAtual == '') {
         primeiroOperando += operando;
-        telaVazia = false;
+
     } else {
-        segundoOperando += operando;
-    };
+        segundoOperando += operando
+    }
 
     input += operando;
     visorCalculo.innerHTML = input;
+
+    console.log('Primeiro operando: ' + primeiroOperando + ' Segundo operando: ' + segundoOperando + ' Operando atual: ' + operando)
 }
 
 function limpaTela() {
@@ -26,51 +28,60 @@ function limpaTela() {
     const visorResultado = document.getElementById('resultado');
     visorCalculo.innerHTML = '';
     visorResultado.innerHTML = '';
-    existeOperador = false;
-    telaVazia = true;
+    naoExisteOperador = true;
     input = '';
-    primeiroOperando = '';
-    segundoOperando = '';
+    primeiroOperando = 0;
+    segundoOperando = 0;
+    operadorAtual = '';
 }
 
 function setaOperador(operador) {
     const visorCalculo = document.getElementById('calculo');
-    input += ' ' + operador + ' '
-    existeOperador = true;
+
+    if (resultadoAuxiliar > 0) {
+        input = resultadoAuxiliar + ' ' + operador + ' ';
+        primeiroOperando += resultadoAuxiliar;
+        resultadoAuxiliar = 0
+    } else {
+        input += ' ' + operador + ' ';
+    }
+
+    naoExisteOperador = false;
     operadorAtual = operador;
     visorCalculo.innerHTML = input;
 }
 
 function calcula() {
-    primeiroOperando = parseInt(primeiroOperando);
-    segundoOperando = parseInt(segundoOperando);
+    primeiroOperandoFloat = parseFloat(primeiroOperando);
+    segundoOperandoFloat = parseFloat(segundoOperando);
     const visorResultado = document.getElementById('resultado');
 
     switch (operadorAtual) {
         case '+':
-            resultado = primeiroOperando + segundoOperando;
+            resultado = primeiroOperandoFloat + segundoOperandoFloat;
+            resultadoAuxiliar = resultado;
             break;
         case '-':
-            resultado = primeiroOperando - segundoOperando;
+            resultado = primeiroOperandoFloat - segundoOperandoFloat;
+            resultadoAuxiliar = resultado;
             break;
         case '/':
-            resultado = primeiroOperando / segundoOperando;
+            resultado = primeiroOperandoFloat / segundoOperandoFloat;
+            resultadoAuxiliar = resultado;
             break;
         case '*':
-            resultado = primeiroOperando * segundoOperando;
+            resultado = primeiroOperandoFloat * segundoOperandoFloat;
+            resultadoAuxiliar = resultado;
             break;
     };
 
     visorResultado.innerHTML = resultado;
-    console.log(visorResultado.innerHTML = resultado)
 
-    resultado = 0;
     primeiroOperando = '';
     segundoOperando = '';
     input = '';
     operadorAtual = '';
-    existeOperador = false;
-    telaVazia = true;
+    NaoExisteOperador = true;
 }
 
 function apaga() {
