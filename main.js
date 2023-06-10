@@ -14,7 +14,7 @@ function novoValor(operando) {
         primeiroOperando += operando;
 
     } else {
-        segundoOperando += operando
+        segundoOperando += operando;
     }
 
     input += operando;
