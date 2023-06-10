@@ -1,3 +1,5 @@
+const visorCalculo = document.getElementById('calculo');
+const visorResultado = document.getElementById('resultado');
 let naoExisteOperador = true;
 let input = '';
 let operadorAtual = '';
@@ -8,7 +10,6 @@ let resultadoAuxiliar = 0;
 
 
 function novoValor(operando) {
-    const visorCalculo = document.getElementById('calculo');
 
     if (operadorAtual == '') {
         primeiroOperando += operando;
@@ -19,13 +20,9 @@ function novoValor(operando) {
 
     input += operando;
     visorCalculo.innerHTML = input;
-
-    console.log('Primeiro operando: ' + primeiroOperando + ' Segundo operando: ' + segundoOperando + ' Operando atual: ' + operando)
 }
 
 function limpaTela() {
-    const visorCalculo = document.getElementById('calculo');
-    const visorResultado = document.getElementById('resultado');
     visorCalculo.innerHTML = '';
     visorResultado.innerHTML = '';
     naoExisteOperador = true;
@@ -36,8 +33,7 @@ function limpaTela() {
 }
 
 function setaOperador(operador) {
-    const visorCalculo = document.getElementById('calculo');
-
+    
     if (resultadoAuxiliar > 0) {
         input = resultadoAuxiliar + ' ' + operador + ' ';
         primeiroOperando += resultadoAuxiliar;
@@ -54,7 +50,6 @@ function setaOperador(operador) {
 function calcula() {
     primeiroOperandoFloat = parseFloat(primeiroOperando);
     segundoOperandoFloat = parseFloat(segundoOperando);
-    const visorResultado = document.getElementById('resultado');
 
     switch (operadorAtual) {
         case '+':
@@ -85,8 +80,6 @@ function calcula() {
 }
 
 function apaga() {
-    const visorCalculo = document.getElementById('calculo');
-
     input = input.substring(0, input.length -1);
     visorCalculo.innerHTML = input;
 }
